@@ -4,9 +4,9 @@
 cd /var/www/html/
 
 # Install dependencies
-npm install
-
-systemctl restart nginx
+sudo npm install
 
 # Start the Node.js application
-npm start &
+sudo nohup node index.js 2>&1 | sudo tee /var/log/app.log > /dev/null &
+
+systemctl restart nginx
