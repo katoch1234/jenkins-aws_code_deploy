@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy to Code-Deploy') {
             steps {
                 withAWS(credentials: 'aws-creds', region: 'us-east-1') {
-                sh 'aws deploy create-deployment --application-name oriserve-web-app --deployment-group-name oriserve-web-app-dg --s3-location bucket=jenkins-codedeploy-oniserve,key=code-deploy,bundleType=zip'
+                sh 'aws deploy create-deployment --application-name oriserve-web-app --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name oriserve-web-app-dg --description "My GitHub deployment demo" --github-location repository=katoch1234/jenkins-aws_code_deploy,commitId=GIT_COMMIT'
             }
         }
 
