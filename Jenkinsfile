@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environemnt {
+        
+    }
     stages{
         stage("clean workspace") {
             steps{
