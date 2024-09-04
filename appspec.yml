@@ -2,8 +2,8 @@ version: 0.0
 os: linux
 files:
   #copy nginx configuration for reverse proxy
-  - source: nginx-proxy-config/default
-    destination: /etc/nginx/nginx.conf
+  - source: nginx-proxy-config/
+    destination: /etc/nginx/conf.d/
     overwrite: true
   #copy app-code to the server
   - source: app-code/
