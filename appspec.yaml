@@ -1,0 +1,13 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/
+    overwrite: true
+file_exists_behavior: OVERWRITE
+branch_config:
+    wip\/.*: ~ 
+    main:
+        deploymentGroupName: oriserve-web-app-dg
+        deploymentGroupConfig:
+            serviceRoleArn: arn:aws:iam::011528265029:role/codeDeploy-role
