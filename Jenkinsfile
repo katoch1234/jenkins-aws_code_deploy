@@ -15,10 +15,11 @@ pipeline {
 
         stage('Deploy to Code-Deploy') {
             steps {
-                withAWS(credentials: 'aws-creds')
+                withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                 sh 'aws deploy create-deployment --application-name oriserve-web-app --deployment-group-name oriserve-web-app-dg --s3-location bucket=jenkins-codedeploy-oniserve,key=code-deploy,bundleType=zip'
             }
         }
 
     }
+}
 }
