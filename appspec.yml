@@ -1,9 +1,21 @@
 version: 0.0
 os: linux
 files:
+  #copy nginx configuration for reverse proxy
+  - source: nginx-proxy-config/
+    destination: /etc/nginx/sites-available/
+    overwrite: true
+  #copy app-code to the server
   - source: app-code/
     destination: /var/www/html/
     overwrite: true
+
+hooks:
+  # Ensure that Nginx is restarted after copying the config files
+  AfterInstall:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
 file_exists_behavior: OVERWRITE
 branch_config:
     wip\/.*: ~ 
