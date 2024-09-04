@@ -15,7 +15,7 @@ pipeline {
 
         stage('Deploy to Code-Deploy') {
             steps {
-                sh 'aws deploy create-deployment --application-name oriserve-web-app --deployment-group-name oriserve-web-app-dg --s3-location bucket=jenkins-codedeploy-oniserve,bundleType=zip'
+                sh 'aws deploy create-deployment --application-name oriserve-web-app --deployment-group-name oriserve-web-app-dg --s3-location bucket=jenkins-codedeploy-oniserve,key=code-deploy,bundleType=zip'
             }
         }
 
