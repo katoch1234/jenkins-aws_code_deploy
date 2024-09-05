@@ -20,6 +20,6 @@ file_exists_behavior: OVERWRITE
 branch_config:
     wip\/.*: ~ 
     main:
-        deploymentGroupName: oriserve-web-app-dg
+        deploymentGroupName: oniserve-web-app-dg
         deploymentGroupConfig:
             serviceRoleArn: arn:aws:iam::011528265029:role/codeDeploy-role
