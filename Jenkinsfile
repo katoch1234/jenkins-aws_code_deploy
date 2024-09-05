@@ -9,7 +9,7 @@ pipeline {
         
         stage('Checkout from Git') {
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/katoch1234/jenkins-aws_code_deploy.git'
+                git branch: 'main', credentialsId: 'github-creds', url: 'https://github.com/katoch1234/jenkins-aws_code_deploy.git'
             }
         }
 
