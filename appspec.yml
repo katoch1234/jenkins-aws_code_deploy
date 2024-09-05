@@ -9,6 +9,7 @@ files:
   - source: app-code/
     destination: /var/www/html/
     overwrite: true
+file_exists_behavior: OVERWRITE
 
 hooks:
   # Ensure that Nginx is restarted after copying the config files
