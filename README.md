@@ -104,7 +104,6 @@ This document outlines the steps I took to set up an automated deployment pipeli
         agent any
         environment {
             AWS_DEFAULT_REGION = 'us-east-1'
-            S3_BUCKET = 'your-s3-bucket-name'
             CODEDEPLOY_APP = 'oriserve-web-app'
             CODEDEPLOY_GROUP = 'oriserve-web-app-dg'
         }
