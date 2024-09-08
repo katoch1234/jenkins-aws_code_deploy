@@ -116,14 +116,9 @@ This document outlines the steps I took to set up an automated deployment pipeli
             }
             stage('Deploy to AWS CodeDeploy') {
                 steps {
-                    script {
-                        withAWS(credentials: 'your-aws-credentials', region: "${AWS_DEFAULT_REGION}") {
-                            def s3Prefix = "deployments/${env.BUILD_NUMBER}"
-                            s3Upload(bucket: "${S3_BUCKET}", includePathPattern: '**/*', workingDir: '.', path: "${s3Prefix}")
-                            awsCodeDeploy(deploymentGroup: "${CODEDEPLOY_GROUP}", applicationName: "${CODEDEPLOY_APP}", s3Location: "${S3_BUCKET}/${s3Prefix}", waitForCompletion: true)
-                        }
-                    }
-                }
+                withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                sh 'aws deploy create-deployment --application-name oriserve-web-app --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name oniserve-web-app-dg --description "My GitHub deployment demo" --github-location repository=katoch1234/jenkins-aws_code_deploy,commitId=${GIT_COMMIT}'
+            }
             }
         }
     }
